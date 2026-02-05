@@ -849,15 +849,20 @@ window.addEventListener('load', applyFadeIn);
 
 // Function to hide overlay and enter portfolio
 function enterPortfolio(role) {
-  console.log(`${role} selected`); // optional: can use for analytics or customization
   const overlay = document.getElementById('whosWatchingOverlay');
-  overlay.style.transition = 'opacity 0.6s ease';
-  overlay.style.opacity = 0;
-  setTimeout(() => overlay.style.display = 'none', 600);
-  
-  // Scroll to top of hero section after overlay disappears
-  document.getElementById('heroSection').scrollIntoView({ behavior: 'smooth' });
+  overlay.style.display = 'none';
+
+  if (role === "Recruiter") {
+    document.getElementById('experienceSection').scrollIntoView({ behavior: 'smooth' });
+  } 
+  else if (role === "Hiring Manager") {
+    document.getElementById('projectsSection').scrollIntoView({ behavior: 'smooth' });
+  } 
+  else if (role === "Collaborator") {
+    document.getElementById('skillsSection').scrollIntoView({ behavior: 'smooth' });
+  }
 }
+
 
 // Ensure body is hidden until overlay is selected
 document.addEventListener('DOMContentLoaded', () => {
